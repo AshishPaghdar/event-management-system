@@ -13,7 +13,6 @@ import org.springframework.cache.annotation.*;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -45,7 +44,7 @@ public class EventService {
 
     @Caching(evict = {@CacheEvict(cacheNames = "events", allEntries = true),
             @CacheEvict(cacheNames = "eventCache", key = "'eventsByUser:' + #userId")})
-        public Event createEvent(EventDTO eventDTO, User user, Long userId) {
+    public Event createEvent(EventDTO eventDTO, User user, Long userId) {
         Event event = EventDTO.mapToEvent(eventDTO);
         event.setUser(user);
         doLongRunningTask();
@@ -60,7 +59,7 @@ public class EventService {
     }
 
     @Cacheable(key = "'eventsByUser:' + #userId")
-    public List<Event> getEventsByUser(Long userId){
+    public List<Event> getEventsByUser(Long userId) {
         doLongRunningTask();
         User user = UserAuthenticationUtil.getUserByAuthentication();
         return eventRepository.findByUser(user);
@@ -83,7 +82,7 @@ public class EventService {
         return eventRepository.save(event);
     }
 
-    @Caching(evict = { @CacheEvict(cacheNames = "event", key = "#eventId"),
+    @Caching(evict = {@CacheEvict(cacheNames = "event", key = "#eventId"),
             @CacheEvict(cacheNames = "eventCache", key = "'eventsByUser:' + #userId")})
     @CacheEvict(cacheNames = "events", allEntries = true)
     public void deleteEvent(Long eventId, User user, Long userId, Locale locale) {

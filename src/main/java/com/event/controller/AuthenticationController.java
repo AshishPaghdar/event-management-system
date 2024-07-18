@@ -3,10 +3,11 @@ package com.event.controller;
 import com.event.DTO.SigninRequest;
 import com.event.DTO.UserDTO;
 import com.event.service.AuthenticationService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@Tag(name = "Auth", description = "Auth management APIs")
 @Slf4j
 public class AuthenticationController {
 

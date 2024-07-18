@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -38,8 +37,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                         Collectors.mapping(parts -> parts[1].trim(), Collectors.toList())
                 ));
 
-        Map<String,Object>  errorMessages = new HashMap<>();
-        errorMessages.put(MESSAGES,errorMap);
+        Map<String, Object> errorMessages = new HashMap<>();
+        errorMessages.put(MESSAGES, errorMap);
         return ResponseEntity.badRequest().body(new Error(HttpStatus.BAD_REQUEST, errorMap));
     }
 

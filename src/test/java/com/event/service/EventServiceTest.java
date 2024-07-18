@@ -108,8 +108,8 @@ public class EventServiceTest {
                 "john.doe@example.com", "1234567890", LocalDate.now(),
                 LocalDate.now(), "Sports, Music", Role.USER);
 
-        Event event = new Event(63L,"Sample Event1","Conference","This is a sample event.","123 Event St, Event City",       // Location
-                LocalDate.now(), LocalDate.now(),LocalDateTime.now(),LocalDateTime.now(),user);
+        Event event = new Event(63L, "Sample Event1", "Conference", "This is a sample event.", "123 Event St, Event City",       // Location
+                LocalDate.now(), LocalDate.now(), LocalDateTime.now(), LocalDateTime.now(), user);
 
         Optional<Event> optionalEvent = Optional.of(event);
         given(eventRepository.findById(event.getId())).willReturn(optionalEvent);
@@ -120,18 +120,18 @@ public class EventServiceTest {
     }
 
     @Test
-    public void eventNotFount(){
+    public void eventNotFount() {
         assertThrows(ResourceNotFoundException.class, () -> eventService.getEventById(1565L, new Locale("en")));
     }
 
     @Test
-    public void updateEvent(){
+    public void updateEvent() {
         User user = new User(1L, "John Doe", "password123", "Male", "123 Main St",
                 "john.doe@example.com", "1234567890", LocalDate.now(),
                 LocalDate.now(), "Sports, Music", Role.USER);
 
-        Event existingEvent = new Event(1L,"News Events","News, advertisement","This is new event.","123 Event St, Event City",       // Location
-                LocalDate.now(), LocalDate.now(),LocalDateTime.now(),LocalDateTime.now(),user);
+        Event existingEvent = new Event(1L, "News Events", "News, advertisement", "This is new event.", "123 Event St, Event City",       // Location
+                LocalDate.now(), LocalDate.now(), LocalDateTime.now(), LocalDateTime.now(), user);
 
         EventDTO eventDTO = EventDTO.mapToEventDTO(existingEvent);
         eventDTO.setName("Updated- Event");
@@ -170,13 +170,13 @@ public class EventServiceTest {
     }*/
 
     @Test
-    public void deleteEvent(){
+    public void deleteEvent() {
         User user = new User(1L, "Ashish Paghdar -1", "password123", "Male", "123 Main St, City",
-                "ashish1@example.com", "1234567890", LocalDate.of(2024, 5,3),
-                LocalDate.of(2024, 5,3), "Music, Sports", Role.USER);
+                "ashish1@example.com", "1234567890", LocalDate.of(2024, 5, 3),
+                LocalDate.of(2024, 5, 3), "Music, Sports", Role.USER);
 
-        Event event = new Event(14343L,"Sample Event1","Conference","This is a sample event.","123 Event St, Event City",       // Location
-                LocalDate.now(), LocalDate.now(),LocalDateTime.now(),LocalDateTime.now(),user);
+        Event event = new Event(14343L, "Sample Event1", "Conference", "This is a sample event.", "123 Event St, Event City",       // Location
+                LocalDate.now(), LocalDate.now(), LocalDateTime.now(), LocalDateTime.now(), user);
 
         // Mock the behavior of eventRepository.findByIdAndUser
         when(eventRepository.findByIdAndUser(event.getId(), user)).thenReturn(Optional.of(event));

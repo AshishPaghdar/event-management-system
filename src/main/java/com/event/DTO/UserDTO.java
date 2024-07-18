@@ -47,8 +47,8 @@ public class UserDTO implements UserDetails {
     private String email;
 
     @NotNull
-    @Pattern(regexp="(^$|[0-9]{10})")
-    @Size(min=10,max=10, message = "Mobile number must be 10 numeric characters")
+    @Pattern(regexp = "(^$|[0-9]{10})")
+    @Size(min = 10, max = 10, message = "Mobile number must be 10 numeric characters")
     @MobileNumber
     private String mobile;
 

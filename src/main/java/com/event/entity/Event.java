@@ -8,13 +8,10 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import io.jsonwebtoken.io.Deserializer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.yaml.snakeyaml.serializer.Serializer;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -62,7 +59,7 @@ public class Event {
     @Column(nullable = false, name = "eventStartDateAndTime")
     private LocalDateTime eventStartDateAndTime;
 
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)

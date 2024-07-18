@@ -3,8 +3,10 @@ This is an event management system developed using Spring Boot framework. This p
 
     1. Spring-security(JWT),
     2. Redis, 
-    3. Global Exception, 
-    4. jUnit, etc...
+    3. Flyway for the database migration,
+    4. Global Exception, 
+    5. jUnit with Jacoco (Java Code Coverage)
+    6. Swagger Explorer
 
 # There are the following steps for the setup of the project.
     1. JDK 17 
